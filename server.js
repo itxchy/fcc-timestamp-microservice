@@ -26,15 +26,20 @@ app.get('/:time', (req, res) => {
         res.json(convertedTimes);
     }
 
+    if (timestamp < 0) {
+        res.json(convertedTimes);
+    }
+
     naturalDate = validateDate(time);
 
     // if a valid natural date was passed as a param, parse it.
     if (naturalDate) {
         convertedTimes.unix = moment(naturalDate, 'MMMM Do YYYY').unix();
         convertedTimes.naturalDate = naturalDate;
+        res.json(convertedTimes);
     }
 
-    res.end(`<h1>${time}</h1>`);
+    res.end(`<h1>ERROR: ${time} is not a valid Unix time or date</h1>`);
 });
 
 // returns a number or false
@@ -49,6 +54,7 @@ function isUnixTimestamp (time) {
     }
 }
 
+// returns a string of the valid date, or false
 function validateDate (time) {
 
     let checkDate = moment(time, 'MMMM Do YYYY').isValid;
