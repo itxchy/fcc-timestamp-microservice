@@ -11,20 +11,36 @@ app.use('/', express.static(__dirname + '/public'));
 app.get('/:time', (req, res) => {
 
     let time = req.params.time;
+    let naturalDate = null;
+    let unixTimestamp = null;
+    let timestampCheck = isUnixTimestamp(time);
+    let covertedTimes = {
+        unixTimeStamp: unixTimeStamp,
+        naturalDate: naturalDate
+    }
 
-
-
+    // if timestampCheck passes, and is greater than 0, proceed
+    if (timestampCheck > 0) {
+        unixTimestamp = timestampCheck;
+        naturalDate = moment(timestamp).format('MMMM Do YYYY');
+        res.json(convertedTimes);
+    }
 
     res.end(`<h1>${time}</h1>`);
 });
 
+
+
+// returns a number or false
 function isUnixTimestamp (time) {
 
-    // change time into number
-    let time = +time;
+    let timeNumber = _.toNumber(time);
 
-    // if time is a number, return the number, else return false
-    if 
+    if (timeNumber !== NaN) {
+        return timeNumber;
+    } else {
+        return false;
+    }
 }
 
 app.listen(4000, () => {
