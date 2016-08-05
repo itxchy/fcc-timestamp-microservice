@@ -39,7 +39,7 @@ app.get('/:time', (req, res) => {
         res.json(convertedTimes);
     }
 
-    res.end(`<h1>ERROR: ${time} is not a valid Unix time or date</h1>`);
+    res.json(convertedTimes);
 });
 
 // returns a number or false
@@ -57,9 +57,12 @@ function isUnixTimestamp (time) {
 // returns a string of the valid date, or false
 function validateDate (time) {
 
-    let checkDate = moment(time, 'MMMM Do YYYY').isValid;
+    let checkDate = moment(time, 'MMMM Do YYYY', true).isValid;
 
-    if (checkDate) {
+    let parsingFlagsObj = moment(time, 'MMMM Do YYYY', true).parsingFlags();
+    console.log('parsing flags check: ', parsingFlagsObj.invalidMonth);
+
+    if (checkDate && !parsingFlagsObj.invalidMonth) {
         return time;
     } else {
         return false;
