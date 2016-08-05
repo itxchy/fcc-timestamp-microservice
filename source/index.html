@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="Matt Trifilo is a Chicago-based Web Developer.">
+        <meta name="description" content="Transform natural dates into unix timecode and vise versa">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Matt Trifilo</title>
+        <title>Timestamp Microservice</title>
         <link 
             href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
             rel="stylesheet" 
@@ -19,10 +19,33 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        
 
-        
-        
+        <main class="container content">
+
+            <h1>Timestamp Microservice</h1>
+
+            <p>A simple API that will convert <a href="https://en.wikipedia.org/wiki/Unix_time">Unix timecode</a> (in seconds) to a natural date, or the other way around.</p>
+
+            <p>Both formats will be returned in a JSON object, as long as the request is valid.</p>
+
+            <h2>Usage</h2>
+
+            <p>Just pass a Unix timecode or a natural date as a param to this page's URL, and a JSON object will be returned with both the Unix timecode and natural date.</p><br>
+
+            <h4>Passing a Natural Date</h4>
+
+            <p>Natual dates must be formatted like this: January 1st 1970</p>
+
+            <p>You must pass the full month name, the day of this month with an ordinal, and a four-digit year.</p>
+
+            <p>Invalid requests will return an object with null values.</p><br>
+
+            <h4>Passing a Unix Timestamp</h4>
+
+            <p>Any number of seconds since the Unix Epoch is valid. A negative number, or a non-number will return null values.</p>
+            
+        </main>
+
         <script 
             src="http://code.jquery.com/jquery-2.2.3.min.js"   
             integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   
