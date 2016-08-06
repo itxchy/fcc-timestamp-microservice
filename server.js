@@ -19,6 +19,10 @@ app.get('/:time', (req, res) => {
         naturalDate: null
     };
 
+    if (req.url === '/favicon.ico') {
+        return;
+    }
+
     // if timestamp is true, and is greater than 0, proceed
     if (timestamp > 0) {
         convertedTimes.unix = timestamp;
