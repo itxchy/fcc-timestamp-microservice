@@ -23,11 +23,11 @@ app.get('/:time', (req, res) => {
     if (timestamp > 0) {
         convertedTimes.unix = timestamp;
         convertedTimes.naturalDate = moment.unix(timestamp).format('MMMM Do YYYY');
-        res.json(convertedTimes);
+        return res.json(convertedTimes);
     }
 
     if (timestamp < 0) {
-        res.json(convertedTimes);
+        return res.json(convertedTimes);
     }
 
     naturalDate = timeHelpers.validateDate(time);
@@ -36,12 +36,12 @@ app.get('/:time', (req, res) => {
     if (naturalDate) {
         convertedTimes.unix = moment(naturalDate, 'MMMM Do YYYY').unix();
         convertedTimes.naturalDate = naturalDate;
-        res.json(convertedTimes);
+        return res.json(convertedTimes);
     }
 
     console.log(`ERROR: ${time} is not a valid Unix time or date.`)
 
-    res.json(convertedTimes);
+    return res.json(convertedTimes);
 });
 
 var timeHelpers = (function () {
@@ -64,6 +64,8 @@ var timeHelpers = (function () {
         let checkDate = moment(time, 'MMMM Do YYYY', true).isValid;
 
         let parsingFlagsObj = moment(time, 'MMMM Do YYYY', true).parsingFlags();
+
+        console.log('parsing obj', parsingFlagsObj);
 
         /* if checkDate is true, and the invalidMonth property of .isValid's parsing flags is null, 
         *  the date is valid. If invalidMonth's value is a mispelled month (or anything else), 
