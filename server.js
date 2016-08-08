@@ -93,4 +93,7 @@ var server = app.listen(4000, () => {
     console.log('Express app listening on port 4000!');
 });
 
-module.exports = server;
+module.exports = {
+    server: server,
+    timeHelpers: timeHelpers
+};
