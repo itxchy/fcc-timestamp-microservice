@@ -7,6 +7,7 @@ chai.use(chaiHttp);
 
 describe('Server', function() {
     it('/ GET should respond with a 200 code', function() {
+        
         chai.request(server.server)
             .get('/')
             .end(function(err, res) {
@@ -44,6 +45,7 @@ describe('Server', function() {
 describe('timeHelpers', function() {
 
     describe('isUnixTimestamp', function() {
+
         it('if time is a number, but a string type, time should be returned as a number', function() {
             var newTimeFromString = server.timeHelpers.isUnixTimestamp('4');
             var newTimeFromNumber = server.timeHelpers.isUnixTimestamp(4);
