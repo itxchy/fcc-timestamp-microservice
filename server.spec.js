@@ -108,4 +108,32 @@ describe('timeHelpers', function() {
             expect(newTime).to.be.false;
         });
     });
+
+    describe('validateDate', function() {
+
+        it('if natural date format is valid (MMMM Do YYYY) return the date', function() {
+            var validDate = server.timeHelpers.validateDate('August 8th 2016');
+
+            expect(validDate).to.eql('August 8th 2016');
+        });
+
+        it('if month is invalid, return false', function() {
+            var invalidMonth = server.timeHelpers.validateDate('Augus 8th 2016');
+
+            expect(invalidMonth).to.be.false;
+        });
+
+        it('if day is invalid, return false', function() {
+            var invalidDay = server.timeHelpers.validateDate('August 54th 2016');
+
+            expect(invalidDay).to.be.false;
+        });
+
+        it('if year is invalid, return false', function() {
+            var invalidYear = server.timeHelpers.validateDate('August 8th 20166');
+
+            expect(invalidYear).to.be.false;
+        });        
+
+    })
 });
