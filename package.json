@@ -4,7 +4,7 @@
   "description": "Converts a date to a Unix timestamp, or a Unix timestamp to a natural language date. Both are returned",
   "main": "source/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./*.spec.js"
   },
   "author": "Matt Trifilo",
   "license": "MIT",
@@ -25,7 +25,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
-    "mocha": "^3.0.1"
+    "mocha": "^3.0.2"
   },
   "dependencies": {
     "compression": "^1.6.2",

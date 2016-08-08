@@ -71,10 +71,10 @@ var timeHelpers = (function () {
 
         console.log('parsing obj', parsingFlagsObj);
 
-        /* if checkDate is true, and the invalidMonth property of .isValid's parsing flags is null, 
-        *  the date is valid. If invalidMonth's value is a mispelled month (or anything else), 
-        *  the date is invalid.
-        */
+        /** if checkDate is true, and the invalidMonth property of .isValid's parsing flags is null, 
+         *  the date is valid. If invalidMonth's value is a mispelled month (or anything else), 
+         *  the date is invalid.
+         */
         if (checkDate && !parsingFlagsObj.invalidMonth) {
             return time;
         } else {
@@ -89,6 +89,8 @@ var timeHelpers = (function () {
 
 })();
 
-app.listen(4000, () => {
+var server = app.listen(4000, () => {
     console.log('Express app listening on port 4000!');
 });
+
+module.exports = server;
