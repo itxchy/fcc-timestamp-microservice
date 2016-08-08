@@ -55,7 +55,7 @@ var timeHelpers = (function () {
 
         let timeNumber = _.toNumber(time);
 
-        if (timeNumber !== NaN) {
+        if ( !isNaN(timeNumber) ) {
             return timeNumber;
         } else {
             return false;
