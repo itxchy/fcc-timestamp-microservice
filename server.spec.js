@@ -19,10 +19,9 @@ describe('Server', function() {
 describe('timeHelpers', function() {
 
     describe('isUnixTimestamp', function() {
-        it('Time should be returned as a number', function() {
+        it('time should be returned as a number', function() {
             var newTime = server.timeHelpers.isUnixTimestamp('4');
-
             expect(newTime).to.be.a('number');
-        })
+        });
     });
 });
