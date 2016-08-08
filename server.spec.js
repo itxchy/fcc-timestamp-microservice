@@ -28,6 +28,18 @@ describe('Server', function() {
             });
     });
 
+    it('/-1470687311 GET should return the correct date, May 25th 1923', function() {
+
+        var testJSON = { unix: -1470687311, naturalDate: 'May 25th 1923' };
+
+        chai.request(server.server)
+            .get('/-1470687311')
+            .end(function(err, res) {
+                expect(res.body).to.eql(testJSON);
+                done();
+            });
+    });    
+
     it('/August 8th 2016 GET should return the correct Unix timestamp, 1470687311', function() {
 
         var testJSON = { unix: 1470687311, naturalDate: 'August 8th 2016' };

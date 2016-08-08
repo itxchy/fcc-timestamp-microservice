@@ -54,11 +54,7 @@ var timeHelpers = (function () {
         if ( isNaN(timeNumber) ) {
             console.log(`ERROR: ${timeNumber} is not a number.`)
             return false;
-        } else if ( timeNumber < 0 ) {
-            console.log(`ERROR: ${timeNumber} is less than zero.`)
-            return false;
-        }
-        else {
+        } else {
             return timeNumber;
         }
     }
