@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 
 describe('Server', function() {
     it('/ GET should respond with a 200 code', function() {
-        
+
         chai.request(server.server)
             .get('/')
             .end(function(err, res) {
@@ -34,6 +34,42 @@ describe('Server', function() {
 
         chai.request(server.server)
             .get('/August 8th 2016')
+            .end(function(err, res) {
+                expect(res.body).to.eql(testJSON);
+                done();
+            });
+    });
+
+    it('/August 8th 20166 GET should return null', function() {
+
+        var testJSON = { unix: null, naturalDate: null };
+
+        chai.request(server.server)
+            .get('/August 8th 20166')
+            .end(function(err, res) {
+                expect(res.body).to.eql(testJSON);
+                done();
+            });
+    });
+
+    it('/August 38th 2016 GET should return null', function() {
+
+        var testJSON = { unix: null, naturalDate: null };
+
+        chai.request(server.server)
+            .get('/August 38th 2016')
+            .end(function(err, res) {
+                expect(res.body).to.eql(testJSON);
+                done();
+            });
+    });
+
+    it('/Augus 8th 2016 GET should return null', function() {
+
+        var testJSON = { unix: null, naturalDate: null };
+
+        chai.request(server.server)
+            .get('/Augus 38th 2016')
             .end(function(err, res) {
                 expect(res.body).to.eql(testJSON);
                 done();

@@ -70,7 +70,7 @@ var timeHelpers = (function () {
 
         let parsingFlagsObj = moment(time, 'MMMM Do YYYY', true).parsingFlags();
 
-        console.log('parsing obj', parsingFlagsObj);
+        //console.log('parsing obj', parsingFlagsObj);
 
         /** if checkDate is true, and the invalidMonth property of .isValid's parsing flags is null, 
          *  the date is valid. If invalidMonth's value is a mispelled month (or anything else), 
