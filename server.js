@@ -23,14 +23,10 @@ app.get('/:time', (req, res) => {
         return;
     }
 
-    // if timestamp is true, and is greater than 0, proceed
-    if (timestamp > 0) {
+    // if timestamp is true, proceed
+    if (timestamp) {
         convertedTimes.unix = timestamp;
         convertedTimes.naturalDate = moment.unix(timestamp).format('MMMM Do YYYY');
-        return res.json(convertedTimes);
-    }
-
-    if (timestamp < 0) {
         return res.json(convertedTimes);
     }
 
@@ -55,10 +51,15 @@ var timeHelpers = (function () {
 
         let timeNumber = _.toNumber(time);
 
-        if ( !isNaN(timeNumber) ) {
-            return timeNumber;
-        } else {
+        if ( isNaN(timeNumber) ) {
+            console.log(`ERROR: ${timeNumber} is not a number.`)
             return false;
+        } else if ( timeNumber < 0 ) {
+            console.log(`ERROR: ${timeNumber} is less than zero.`)
+            return false;
+        }
+        else {
+            return timeNumber;
         }
     }
 
