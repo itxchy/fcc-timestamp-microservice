@@ -42,7 +42,9 @@
 
             <h4>Passing a Unix Timestamp</h4>
 
-            <p>Any number of seconds since the Unix Epoch is valid. A negative number, or a non-number will return null values.</p>
+            <p>Any number of seconds since, or before, the Unix Epoch is valid. </p>
+
+            <p>If the request includes characters which are not numbers, an object will null values will be returned.</p>
             
         </main>
 
