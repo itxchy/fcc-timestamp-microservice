@@ -1,6 +1,6 @@
 {
   "name": "timestamp-microservice",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Converts a date to a Unix timestamp, or a Unix timestamp to a natural language date. Both are returned",
   "main": "source/index.html",
   "scripts": {

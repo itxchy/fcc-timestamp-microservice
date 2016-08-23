@@ -1,3 +1,5 @@
+/* global done */
+
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var server = require('./server');
@@ -38,7 +40,7 @@ describe('Server', function() {
                 expect(res.body).to.eql(testJSON);
                 done();
             });
-    });    
+    });
 
     it('/August 8th 2016 GET should return the correct Unix timestamp, 1470687311', function() {
 
@@ -133,7 +135,7 @@ describe('timeHelpers', function() {
             var invalidYear = server.timeHelpers.validateDate('August 8th 20166');
 
             expect(invalidYear).to.be.false;
-        });        
+        });
 
-    })
+    });
 });

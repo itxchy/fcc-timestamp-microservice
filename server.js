@@ -1,4 +1,3 @@
-
 const compression = require('compression');
 const express     = require('express');
 const _           = require('lodash');
@@ -11,6 +10,11 @@ app.use('/', express.static(__dirname + '/public'));
 
 app.get('/:time', (req, res) => {
 
+    // ignore requests for favicaon.ico
+    if (req.url === '/favicon.ico') {
+        return;
+    }
+
     let time = req.params.time;
     let timestamp = timeHelpers.isUnixTimestamp(time);
     let naturalDate = null;
@@ -19,27 +23,23 @@ app.get('/:time', (req, res) => {
         naturalDate: null
     };
 
-    if (req.url === '/favicon.ico') {
-        return;
-    }
-
-    // if timestamp is true, proceed
+    // if timestamp is true, craft a JSON response
     if (timestamp) {
         convertedTimes.unix = timestamp;
         convertedTimes.naturalDate = moment.unix(timestamp).format('MMMM Do YYYY');
         return res.json(convertedTimes);
     }
 
+    // if a valid natural date was passed as a param, parse it and craft a JSON response
     naturalDate = timeHelpers.validateDate(time);
 
-    // if a valid natural date was passed as a param, parse it.
     if (naturalDate) {
         convertedTimes.unix = moment(naturalDate, 'MMMM Do YYYY').unix();
         convertedTimes.naturalDate = naturalDate;
         return res.json(convertedTimes);
     }
 
-    console.log(`ERROR: ${time} is not a valid Unix time or date.`)
+    console.log(`ERROR: ${time} is not a valid Unix time or date.`);
 
     return res.json(convertedTimes);
 });
@@ -48,11 +48,12 @@ var timeHelpers = (function () {
 
     // returns a number or false
     function isUnixTimestamp (time) {
+        console.log('time:', time);
 
         let timeNumber = _.toNumber(time);
 
         if ( isNaN(timeNumber) ) {
-            console.log(`ERROR: ${timeNumber} is not a number.`)
+            console.log(`55ERROR: ${timeNumber} is not a number.`);
             return false;
         } else {
             return timeNumber;
