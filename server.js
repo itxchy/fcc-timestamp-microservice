@@ -20,13 +20,13 @@ app.get('/:time', (req, res) => {
     let naturalDate = null;
     let convertedTimes = {
         unix: null,
-        naturalDate: null
+        natural_date: null
     };
 
     // if timestamp is true, craft a JSON response
     if (timestamp) {
         convertedTimes.unix = timestamp;
-        convertedTimes.naturalDate = moment.unix(timestamp).format('MMMM Do YYYY');
+        convertedTimes.natural_date = moment.unix(timestamp).format('MMMM Do YYYY');
         return res.json(convertedTimes);
     }
 
@@ -35,11 +35,9 @@ app.get('/:time', (req, res) => {
 
     if (naturalDate) {
         convertedTimes.unix = moment(naturalDate, 'MMMM Do YYYY').unix();
-        convertedTimes.naturalDate = naturalDate;
+        convertedTimes.natural_date = naturalDate;
         return res.json(convertedTimes);
     }
-
-    console.log(`ERROR: ${time} is not a valid Unix time or date.`);
 
     return res.json(convertedTimes);
 });
@@ -48,12 +46,10 @@ var timeHelpers = (function () {
 
     // returns a number or false
     function isUnixTimestamp (time) {
-        console.log('time:', time);
 
         let timeNumber = _.toNumber(time);
 
         if ( isNaN(timeNumber) ) {
-            console.log(`55ERROR: ${timeNumber} is not a number.`);
             return false;
         } else {
             return timeNumber;

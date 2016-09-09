@@ -23,6 +23,7 @@
         <main class="container content">
 
             <h1>Timestamp Microservice</h1>
+            <br>
 
             <p>A simple API that will convert <a href="https://en.wikipedia.org/wiki/Unix_time">Unix timecode</a> (in seconds) to a natural date, or the other way around.</p>
 
@@ -30,7 +31,7 @@
 
             <h2>Usage</h2>
 
-            <p>Just pass a Unix timecode or a natural date as a param to this page's URL, and a JSON object will be returned with both the Unix timecode and natural date.</p><br>
+            <p>Just pass a Unix timecode or a natural date as a parameter on this page's URL, and a JSON object will be returned with both the Unix timecode and natural date.</p><br>
 
             <h4>Passing a Natural Date</h4>
 
@@ -45,7 +46,30 @@
             <p>Any number of seconds since, or before, the Unix Epoch is valid. </p>
 
             <p>If the request includes characters which are not numbers, an object will null values will be returned.</p>
-            
+
+            <h2>Examples</h2>
+            <br>
+            <h4>Converting a Unix Timestamp</h4>
+            <p><code>this.site/1470687311</code> will return:</p>
+            <p>
+                <code>
+                    {
+                        "unix": 1470687311,
+                        "naturalDate": "August 8th 2016"
+                    }
+                </code>
+            </p>
+            <br>
+            <h4>Converting a Natural Date</h4>
+            <p><code>this.site/August 8th 2016</code> will return the same thing:</p>
+            <p>
+                <code>
+                    {
+                        "unix": 1470687311,
+                        "naturalDate": "August 8th 2016"
+                    }
+                </code>            
+            </p>
         </main>
 
         <script 

@@ -20,7 +20,7 @@ describe('Server', function() {
 
     it('/1470687311 GET should return the correct date, August 8th 2016', function() {
 
-        var testJSON = { unix: 1470687311, naturalDate: 'August 8th 2016' };
+        var testJSON = { unix: 1470687311, natural_date: 'August 8th 2016' };
 
         chai.request(server.server)
             .get('/1470687311')
@@ -32,7 +32,7 @@ describe('Server', function() {
 
     it('/-1470687311 GET should return the correct date, May 25th 1923', function() {
 
-        var testJSON = { unix: -1470687311, naturalDate: 'May 25th 1923' };
+        var testJSON = { unix: -1470687311, natural_date: 'May 25th 1923' };
 
         chai.request(server.server)
             .get('/-1470687311')
@@ -44,7 +44,7 @@ describe('Server', function() {
 
     it('/August 8th 2016 GET should return the correct Unix timestamp, 1470687311', function() {
 
-        var testJSON = { unix: 1470687311, naturalDate: 'August 8th 2016' };
+        var testJSON = { unix: 1470687311, natural_date: 'August 8th 2016' };
 
         chai.request(server.server)
             .get('/August 8th 2016')
@@ -56,7 +56,7 @@ describe('Server', function() {
 
     it('/August 8th 20166 GET should return null', function() {
 
-        var testJSON = { unix: null, naturalDate: null };
+        var testJSON = { unix: null, natural_date: null };
 
         chai.request(server.server)
             .get('/August 8th 20166')
@@ -68,7 +68,7 @@ describe('Server', function() {
 
     it('/August 38th 2016 GET should return null', function() {
 
-        var testJSON = { unix: null, naturalDate: null };
+        var testJSON = { unix: null, natural_date: null };
 
         chai.request(server.server)
             .get('/August 38th 2016')
@@ -80,7 +80,7 @@ describe('Server', function() {
 
     it('/Augus 8th 2016 GET should return null', function() {
 
-        var testJSON = { unix: null, naturalDate: null };
+        var testJSON = { unix: null, natural_date: null };
 
         chai.request(server.server)
             .get('/Augus 38th 2016')
